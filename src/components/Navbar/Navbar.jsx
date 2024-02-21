@@ -56,13 +56,20 @@ const Navbar = ({ theme, setTheme }) => {
               ))}
               <button className="bg-green-500 text-white px-6 py-2 rounded-lg  hover:bg-green-400"><Link to="/login">Login</Link></button>
               {/* cart icon */}
-              <IoCartOutline className="w-7 h-7" />
+              <NavLink to="/cart" className="relative">
+            <IoCartOutline className="w-9 h-9 cursor-pointer"/>
+            <span  className="w-5 h-5 absolute rounded-full bg-green-500 top-0 right-0 text-white grid place-items-center font-semibold">0</span>
+
+            </NavLink>
             </ul>
           </nav>
           {/* Mobile view  */}
           <div className="flex items-center gap-4 md:hidden ">
-            {/* dark  mode */}
-            <IoCartOutline className="w-7 h-7"/>
+            {/* cart  */}
+            <NavLink to="/cart">
+            <IoCartOutline className="w-7 h-7 cursor-pointer"/>
+
+            </NavLink>
             {/* Mobile Hamburger icon */}
             {showMenu ? (
               <HiMenuAlt1

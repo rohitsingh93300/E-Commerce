@@ -11,6 +11,8 @@ import { AppProvider } from './components/Context/ProductContext.jsx';
 import { FilterContextProvider } from './components/Context/Filter_context.jsx';
 import SingalProduct from './components/SingalProduct.jsx';
 import AllProducts from './components/AllProducts.jsx';
+import { CartProvider } from './components/Context/cart_context.jsx';
+import Cart from './components/Cart.jsx';
 
 const router = createBrowserRouter([
   {
@@ -38,6 +40,10 @@ const router = createBrowserRouter([
         element: <Login/>,
       },
       {
+        path: "cart",
+        element: <Cart/>,
+      },
+      {
         path: "singleproduct/:id",
         element: <SingalProduct/>,
       },
@@ -50,11 +56,12 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  
     <AppProvider>
       <FilterContextProvider>
+        <CartProvider>
     <RouterProvider router={router} />
+    </CartProvider>
     </FilterContextProvider>
     </AppProvider>
-  </React.StrictMode>,
 )
