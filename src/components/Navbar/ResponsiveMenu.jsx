@@ -5,7 +5,7 @@ import { Navlinks } from "./Navbar";
 import { Link, NavLink } from "react-router-dom";
 
 const ResponsiveMenu = ({ showMenu }) => {
-  console.log("showMenu", showMenu);
+ 
   return (
     <div
       className={`${

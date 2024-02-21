@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import FilterSection from './FilterSection'
 import ProductList from './ProductList'
 import Sort from './Sort'
+import MobileFilter from './MobileFilter'
 
 
 const AllProducts = () => {
+  // const [showFilter, setShowFilter] = useState(false)
+
+  // const toggleFilter = () => {
+  //   setShowFilter(!showFilter);
+  // };
     
    
   return (
@@ -17,6 +23,9 @@ const AllProducts = () => {
       <div >
       <Sort/>
       </div>
+      {/* <div className='sm:hidden'>
+        <MobileFilter showFilter={showFilter}/>
+      </div> */}
       <div >
       <ProductList/>
       </div>
