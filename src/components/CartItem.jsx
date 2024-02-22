@@ -5,14 +5,14 @@ import { FaTrash } from 'react-icons/fa'
 import { useCartContext } from './Context/cart_context'
 
 const CartItem = ({ id, name, image, color, price, amount }) => {
-    const {removeItem} = useCartContext();
-    const setDecrease = ()=>{
-        // amount >1? setAmount(amount-1):setAmount(1);
-    }
+    const {removeItem, setDecrease, setIncrease} = useCartContext();
+    // const setDecrease = ()=>{
+    //     // amount >1? setAmount(amount-1):setAmount(1);
+    // }
 
-    const setIncrease =()=>{
-        // amount<stock ? setAmount(amount +1): setAmount(stock);
-    }
+    // const setIncrease =()=>{
+    //     // amount<stock ? setAmount(amount +1): setAmount(stock);
+    // }
     return (
         <>
         <div className='grid sm:grid-cols-5 grid-cols-3 place-items-center pt-5'>
@@ -22,7 +22,7 @@ const CartItem = ({ id, name, image, color, price, amount }) => {
                         <img src={image} alt={id} />
                     </figure>
                 </div>
-                <div className=''>
+                <div className='text-center'>
                     <p>{name}</p>
                     <div className='flex items-center gap-1'>
                         <p>Color :</p>
@@ -36,7 +36,7 @@ const CartItem = ({ id, name, image, color, price, amount }) => {
                 <p><FormatPrice price={price} /></p>
             </div>
             {/* quantity */}
-            <CartAmountToggle amount={amount} setDecrease={setDecrease} setIncrease={setIncrease} />
+            <CartAmountToggle amount={amount} setDecrease={()=>setDecrease(id)} setIncrease={()=>setIncrease(id)} />
             {/* subtotal */}
             <div className='hidden sm:block'>
                 <p><FormatPrice price={price*amount}/></p>
