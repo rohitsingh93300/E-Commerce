@@ -13,6 +13,7 @@ import SingalProduct from './components/SingalProduct.jsx';
 import AllProducts from './components/AllProducts.jsx';
 import { CartProvider } from './components/Context/cart_context.jsx';
 import Cart from './components/Cart.jsx';
+import { Auth0Provider } from '@auth0/auth0-react';
 
 const router = createBrowserRouter([
   {
@@ -56,7 +57,11 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  
+  <Auth0Provider
+  domain="rohitsingh93300.us.auth0.com"
+  clientId="VzBGiNFPmheZzKpMqi2wH5wy192yn0Tw"
+  authorizationParams={{
+    redirect_uri: window.location.origin}}>
     <AppProvider>
       <FilterContextProvider>
         <CartProvider>
@@ -64,4 +69,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </CartProvider>
     </FilterContextProvider>
     </AppProvider>
+    </Auth0Provider>
 )

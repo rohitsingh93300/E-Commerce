@@ -4,9 +4,11 @@ import CartItem from './CartItem';
 import { NavLink } from 'react-router-dom';
 import empty_cart from "../assets/empty_cart.png"
 import FormatPrice from './Helpers/FormatPrice';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Cart = () => {
     const {cart, clearCart, total_amount, shipping_fee} = useCartContext();
+    const {isAuthenticated, user} = useAuth0()
    if (cart.length==0){
     return <div className='grid place-items-center '>
     <img src={empty_cart} alt="" className='lg:w-[400px] w-[300px]' />
@@ -18,6 +20,10 @@ const Cart = () => {
    }
   return (
     <div className='container m-auto relative '>
+      {isAuthenticated && <div className='flex gap-4 mt-8 mb-5 items-center justify-center sm:justify-start'>
+        <img src={user.picture} alt={user.name} className='rounded-full sm:w-[100px] w-[50px]' />
+        <h2 className='font-semibold sm:text-3xl text-xl '>Welcome {user.name}!</h2>
+        </div>}
       <div className='grid sm:grid-cols-5 grid-cols-3 place-items-center p-3'>
         <p>Item</p>
         <p className='hidden sm:block'>Price</p>
